@@ -1,0 +1,21 @@
+.light {
+  background-color: var(--Very-Light-Gray);
+  color: var(--Very-Dark-Blue);
+}
+
+.dark {
+  background-color: var(--Very-Dark-Blue-bg);
+  color: var(--White);
+}
+
+.app {
+  min-height: 100vh;
+  transition: 50ms all ease;
+}
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+

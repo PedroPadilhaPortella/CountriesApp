@@ -1,0 +1,68 @@
+:root {
+--Dark-Blue: hsl(209, 23%, 22%);
+--Very-Dark-Blue-bg: hsl(207, 26%, 17%);
+--Very-Dark-Blue: hsl(200, 15%, 8%);
+--Dark-Gray: hsl(0, 0%, 52%);
+--Very-Light-Gray: hsl(0, 0%, 98%);
+--White: hsl(0, 0%, 100%);
+}
+
+*{
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+html,body { height:100%; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background-color: var(--Very-Light-Gray);
+  overflow: overlay;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--Dark-Gray);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--Dark-Blue);
+}
+
+main {
+  display: block;
+}
+
+a, a:visited, a:hover {
+  color: var(--Very-Dark-Blue);
+  text-decoration: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

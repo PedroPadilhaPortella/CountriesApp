@@ -1,0 +1,64 @@
+<main>
+    <div class="container-detail">
+        <div class="command-bar">
+            <a routerLink="">
+                <button>
+                    <svg 
+                        version="1.0" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="20" height="20" 
+                        viewBox="0 0 20 20"
+                        viewBox="0 0 64.000000 64.000000" 
+                        preserveAspectRatio="xMidYMid meet" class="left">
+
+                        <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)" stroke="none">
+                            <path d="M100 395 c-41 -38 -75 -73 -75 -77 0 -4 34 -37 75 -74 l75 -68 3 47 3 47 227 2 227 3 0 45 0 45 -227 3 -227 2 -3 48 -3 47 -75 -70z" 
+                            />
+                        </g>
+                    </svg>
+                    <span>Back</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="country-info" *ngIf="country$ | async as country">
+            <div class="flag" [ngStyle]="{'background-image': 'url(' + country.flag + ')'}">
+                &nbsp;
+            </div>
+
+            <article class="info">
+                <header>{{ country.name }}</header>
+                <section class="row">
+                    <ul class="col1">
+                        <li><span>Native Name:</span> {{ country.nativeName }}</li>
+                        <li><span>Population:</span> {{ country.population | number }}</li>
+                        <li><span>Region:</span> {{ country.region }}</li>
+                        <li><span>Sub Region:</span> {{ country.subregion }}</li>
+                        <li><span>Capital:</span> {{ country.capital }}</li>
+                    </ul>
+                    <ul class="col2">
+                        <li><span>Top Level Domain:</span> {{ country.topLevelDomain }}</li>
+                        <li><span>Currencies:</span> {{ displayCurrencies(country.currencies) }}</li>
+                        <li><span>Languages:</span> {{ displayLanguages(country.languages) }}</li>
+                    </ul>
+                </section>
+                
+                <section class="borders">
+                    <span class="border-title">Border Countries:</span>
+                    <span *ngIf="loaderService.isLoading | async" class="loader-container">
+                        Loading ...
+                    </span>
+                    <span *ngIf="!borderCountries$">None.</span>
+                    <div class="borders-btns" *ngIf="borderCountries$ | async; let borderCountries">
+                        <a *ngFor="let borderCountry of borderCountries"
+                            [routerLink]="['/country/', borderCountry.alpha3Code]">
+                            <button>{{ borderCountry.name }}</button>
+                        </a>
+                    </div>
+                </section>
+                
+            </article>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,64 @@
+<main>
+    <div class="container">
+
+        <div class="search-bar">
+            <svg id="svg6" version="1.1" height="20" width="20" class="search-icon">
+                <path 
+                    style="stroke-width:0.0424166" 
+                    id="path2"
+                    d="m 8.9617493,1.6304147 c -3.6087143,0 -6.5341398,2.9254255 -6.5341823,6.5341403 -4.25e-5,3.608714 2.925468,6.534182 6.5341823,6.534182 3.6087147,0 6.5341827,-2.925468 6.5341827,-6.534182 0,-3.6087148 -2.925468,-6.5341403 -6.5341827,-6.5341403 z m 0,1.1357456 c 1.4619707,0 2.8640917,0.5687629 3.8978677,1.5811601 1.033775,1.0123982 1.614543,2.3855066 1.614543,3.8172346 0,1.431727 -0.580768,2.804836 -1.614543,3.817233 -1.033776,1.012398 -2.435897,1.581162 -3.8978677,1.581162 -3.0444046,0 -5.5123682,-2.416937 -5.5123682,-5.398395 0,-2.9814591 2.4679636,-5.3983523 5.5123682,-5.3983947 z" 
+                />
+                <rect 
+                    style="stroke-width:0.0424166" 
+                    id="rect4" 
+                    width="7.3392053" 
+                    height="1.5340787" 
+                    x="17.808762"
+                    y="-2.0589159" 
+                    transform="matrix(0.65316801,0.75721301,-0.60689104,0.79478505,0,0)" 
+                    rx="1.4103074"
+                    ry="0.76701814"
+                />
+            </svg>
+            <input type="text" class="search-input" 
+                placeholder="Search for a country..." [(ngModel)]="searchFilter"
+            >
+
+            <div>
+                <svg width="20" height="20" version="1.1" viewBox="0 0 20 20" xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
+                    <g id="Rounded_Rectangle_33_copy_4_1_" transform="matrix(.017857 0 0 .017857 1.4286 4.8573)">
+                        <path
+                            d="m480 344.18-211.13-212.29c-15.756-15.859-41.3-15.859-57.054 0-15.754 15.857-15.754 41.57 0 57.431l237.63 238.94c8.395 8.451 19.562 12.254 30.553 11.698 10.993 0.556 22.159-3.247 30.555-11.698l237.63-238.94c15.756-15.86 15.756-41.571 0-57.431s-41.299-15.859-57.051 0z" 
+                        />
+                    </g>
+                </svg>
+                <select class="region-input" [(ngModel)]="regionFilter">
+                    <option value="" selected>Filter by Region</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="countries-grid" *ngIf="source">
+            <a *ngFor="let country of countries" [routerLink]="['/country/',country.alpha3Code | lowercase]">
+                <article class="card">
+                    <div class="flag" [ngStyle]="{'background-image': 'url(' + country.flag + ')'}">
+                        &nbsp;
+                    </div>
+                    <header>{{ country.name }}</header>
+                    <ul>
+                        <li><span>Population:</span> {{ country.population | number }}</li>
+                        <li><span>Region:</span> {{ country.region }}</li>
+                        <li><span>Capital:</span> {{ country.capital }}</li>
+                    </ul>
+                </article>
+            </a>
+        </div>
+
+    </div>
+</main>
